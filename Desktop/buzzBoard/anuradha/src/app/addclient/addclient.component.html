@@ -1,0 +1,20 @@
+<form [formGroup]="clientForm" (ngSubmit)="onsubmitReg()">
+    <label Class="w-full text-md font-light">Client Name &nbsp;</label>
+    <input type="text" class="form-control" aria-describedby="passwordHelpInline" formControlName="clientName" placeholder="First Name" />
+    <br /><br />
+    <label Class="w-full text-md font-light">Email &nbsp;</label>
+
+    <input type="text" class="form-control" aria-describedby="passwordHelpInline" formControlName="clientEmail" placeholder="Last Name" />
+    <br /><br />
+    <label Class="w-full text-md font-light">Phone &nbsp;</label>
+
+    <input type="text" class="form-control" aria-describedby="passwordHelpInline" formControlName="clientPhone" placeholder="Email" />
+    <br /><br />
+    <button type="button" class="btn btn-success" (click)="add()" *ngIf="!update">Add</button>
+
+<!-- <button (click)="add()" *ngIf="!update">Add</button> -->
+<!-- <button type="submit" *ngIf="update" (click) = "updateClient(clientForm.value)">Update</button> -->
+<button type="button" class="btn btn-success" *ngIf="update" (click) = "updateClient(clientForm.value)">Update</button>
+
+  </form>
+  
