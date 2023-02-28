@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControlName, FormGroup, Validators,FormControl} from '@angular/forms';
-import { Router,NavigationExtras  } from '@angular/router';
+import { Router,NavigationExtras, ActivatedRoute  } from '@angular/router';
 import { SharedataService } from '../sharedata.service';
 @Component({
   selector: 'app-addclient',
@@ -9,16 +9,18 @@ import { SharedataService } from '../sharedata.service';
 })
 export class AddclientComponent implements OnInit {
 
-  constructor(private route:Router , private myservice: SharedataService) { }
+  constructor(private route:Router , private myservice: SharedataService ,private Aroute:ActivatedRoute ) { }
   clientData:any=[];
   edit:any=[];
   update:Boolean = false;
   tempdata:any;
   editClient:any;
+  datafromHome:any;
   ngOnInit(): void {
-    // this.myservice.details.subscribe(data =>{
-    //   console.log(data)
-    // })
+   this.Aroute.queryParams.subscribe(params =>{
+this.datafromHome = params['homeData'];
+// alert(this.datafromHome)
+   })
     this.myservice.editData.subscribe(
       det =>
       this.edit= det

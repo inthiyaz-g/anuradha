@@ -21,6 +21,7 @@ editObj:any
 cname:any;
 cemail:any;
 cphone:any;
+dataTosend = [1,2]
   ngOnInit(): void {
     this.myservice.details.subscribe(
       det =>
@@ -120,13 +121,9 @@ this.myservice.editData.next([]);
  }
  editClient(client:any){
 alert(client.id)
-//   this.editData(client);
-// this.myservice.tempEdit();
-// this.myservice.deleteClient(i);
-// this.editObj = client;
-// this.cname=this.editObj.clientName;
-// this.cemail = this.editObj.clientEmail;
-// this.cphone = this.editObj.clientPhone;
-// alert(this.cname)
+ }
+ sendTo(){
+  this.route.navigate(['/addclient'], { queryParams: { homeData: JSON.stringify(this.dataTosend) } });
+
  }
 }
